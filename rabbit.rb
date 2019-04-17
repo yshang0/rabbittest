@@ -1,10 +1,11 @@
 require 'bunny'
 
-connection = Bunny.new(host:  'localhost',
-                  port:  '5672',
-                  vhost: '/',
-                  user:  'guest',
-                  pass:  'guest')
+connection = Bunny.new ENV['CLOUDAMQP_URL']
+# (host:  'localhost',
+#                   port:  '5672',
+#                   vhost: '/',
+#                   user:  'guest',
+#                   pass:  'guest')
 connection.start
 
 channel = connection.create_channel
